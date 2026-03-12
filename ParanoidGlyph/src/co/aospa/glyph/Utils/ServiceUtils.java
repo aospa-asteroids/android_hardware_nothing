@@ -30,7 +30,6 @@ import co.aospa.glyph.Services.ChargingService;
 import co.aospa.glyph.Services.FlipToGlyphService;
 import co.aospa.glyph.Services.MusicVisualizerService;
 import co.aospa.glyph.Services.PowershareService;
-import co.aospa.glyph.Services.ThirdPartyService;
 import co.aospa.glyph.Services.VolumeLevelService;
 
 public final class ServiceUtils {
@@ -112,22 +111,9 @@ public final class ServiceUtils {
                 UserHandle.CURRENT);
     }
 
-    public static void startThirdPartyService() {
-        if (DEBUG) Log.d(TAG, "Starting ThirdParty service");
-        context.startServiceAsUser(new Intent(context, ThirdPartyService.class),
-                UserHandle.CURRENT);
-    }
-
-    protected static void stopThirdPartyService() {
-        if (DEBUG) Log.d(TAG, "Stopping ThirdParty service");
-        context.stopServiceAsUser(new Intent(context, ThirdPartyService.class),
-                UserHandle.CURRENT);
-    }
-
     public static void checkGlyphService() {
         if (SettingsManager.isGlyphEnabled()) {
             Constants.setBrightness(SettingsManager.getGlyphBrightness());
-            startThirdPartyService();
             if (SettingsManager.isGlyphChargingEnabled()) {
                 startChargingService();
             } else {
@@ -165,7 +151,6 @@ public final class ServiceUtils {
             stopFlipToGlyphService();
             stopMusicVisualizerService();
             stopVolumeLevelService();
-            stopThirdPartyService();
         }
     }
 }

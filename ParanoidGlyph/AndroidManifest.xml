@@ -34,7 +34,6 @@
         android:label="@string/glyph_settings_app_name"
         android:persistent="true"
         android:defaultToDeviceProtectedStorage="true"
-        android:enableOnBackInvokedCallback="true"
         android:directBootAware="true">
 
         <receiver
@@ -95,18 +94,10 @@
             android:name=".Tiles.TorchTileService"
             android:exported="true"
             android:label="@string/glyph_accessibility_quick_settings_torch"
-            android:icon="@drawable/qs_glyphs_torch_icon"
+            android:icon="@drawable/ic_glyphs_logo"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-        </service>
-        <service
-            android:name=".Services.ThirdPartyService"
-            android:exported="true"
-            android:permission="android.permission.BIND_SERVICE">
-            <intent-filter>
-                <action android:name="co.aospa.glyph.Services.ThirdPartyService" />
             </intent-filter>
         </service>
         <activity
@@ -129,7 +120,7 @@
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.homepage" />
+                android:value="com.android.settings.category.ia.system" />
             <meta-data
                 android:name="com.android.settings.icon"
                 android:resource="@drawable/ic_glyphs_logo" />
@@ -138,10 +129,7 @@
                 android:value="@string/glyph_settings_summary" />
              <meta-data
                 android:name="com.android.settings.order"
-                android:value="-115" />
-             <meta-data
-		android:name="com.android.settings.group_key"
-		android:value="top_level_personalize_category" />
+                android:value="-255" />
         </activity>
 
         <activity
